@@ -1,0 +1,69 @@
+select * from Customers /*1*/
+
+select distinct Country from Customers /*2*/
+
+select * from Customers /*3*/
+where CustomerID like 'Bl%'
+
+select top(100) * from Orders /*4*/
+
+select * from Customers /*5*/
+where PostalCode in ('1010', '3012', '12209', '05023')
+
+select * from orders /*6*/
+where ShipRegion is not null
+
+select * from Customers 
+order by Country, City /*7*/
+
+INSERT into Customers (CustomerID, CompanyName)
+Values
+('ITURG','Its ur Gurl') /*8*/
+
+select * from Orders
+where ShipCountry = 'France'
+
+update Orders set ShipRegion='EuroZone'
+where ShipCountry='France' /*9*/
+
+select * from [Order Details]
+where Quantity = 1
+
+delete from [Order Details]
+where Quantity = 1 /*10*/
+
+select MIN(Quantity) from [Order Details]/*11*/
+select Max(Quantity) from [Order Details]/*11*/
+select Avg(Quantity) from [Order Details]/*11*/
+
+select * from [Order Details] order by OrderID
+
+select orderid, MIN(Quantity) as 'Min', MAX(Quantity)as 'Max', Avg(Quantity)as 'Avg'
+from [Order Details]
+group by OrderID/*12*/
+
+select * from Orders
+where orderid = '10290'
+
+select CustomerID from Customers where CustomerID in /* nested select*/
+(select distinct CustomerID from Orders where orderid = '10290') /*13*/
+
+
+select * from Orders
+select * from Customers
+
+select * /* inner join */ /*14*/
+from Customers
+inner join Orders on Orders.CustomerID=Customers.CustomerID
+
+select */* inner join */ /*14*/
+from Customers
+left join Orders on Orders.CustomerID=Customers.CustomerID
+
+select */* inner join */ /*14*/
+from Customers
+right join Orders on Orders.CustomerID=Customers.CustomerID
+
+
+
+
